@@ -1,11 +1,11 @@
-#ifndef VIEWMODEL_H
-#define VIEWMODEL_H
-
+#pragma once
+#include <vector>
+#include "KMeansClustering.h"
 
 class ViewModel
 {
 public:
-    ViewModel();
+    DataVector Data;
+    IntVector Groups;
+    std::vector<DataVector> GroupPaths;
 };
-
-#endif // VIEWMODEL_H

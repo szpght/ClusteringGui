@@ -3,6 +3,7 @@
 #include "chartview.h"
 #include <QMainWindow>
 #include "qcustomplot.h"
+#include "viewmodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     void setupChart();
     QCustomPlot *plot;
+    void drawPlot(ViewModel *viewModel);
 };
 
 #endif // MAINWINDOW_H

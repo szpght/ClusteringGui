@@ -26,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     void setupChart();
     QCustomPlot *plot;
+    void setupPlot();
     void drawPlot(ViewModel *viewModel);
 };
 

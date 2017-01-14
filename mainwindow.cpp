@@ -9,19 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setupPlot();
 
-}
-
-void MainWindow::setupPlot()
-{
-    plot = new QCustomPlot;
-    plot->xAxis->setLabel("x");
-    plot->yAxis->setLabel("y");
-    plot->rescaleAxes(true);
-
+    plot = new CustomPlot;
     ui->gridLayout->addWidget(plot);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -34,39 +26,19 @@ void MainWindow::on_pushButton_clicked()
     DataVector data;
     data.push_back(DataPoint(2, 1));
     data.push_back(DataPoint(1, 2));
+    data.push_back(DataPoint(1, 3));
+    data.push_back(DataPoint(1.5, 0));
+    data.push_back(DataPoint(4, 4));
+    IntVector clusters;
+    clusters.push_back(0);
+    clusters.push_back(1);
+    clusters.push_back(2);
+    clusters.push_back(3);
+    clusters.push_back(3);
     ViewModel model;
     model.Data = data;
-    drawPlot(&model);
-}
-
-
-void MainWindow::drawPlot(ViewModel *viewModel)
-{
-    plot->clearGraphs();
-
-    // plotting data
-    plot->addGraph();
-    auto data = plot->graph(0);
-
-    data->setLineStyle(QCPGraph::lsNone);
-    data->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssPeace, 10));
-    data->setPen(QPen(QColor(0x87, 0xf, 0x57)));
-
-    for (DataPoint & point : viewModel->Data)
-    {
-        data->addData(point.X(), point.Y());
-    }
-
-
-    plot->rescaleAxes();
-    auto range = plot->xAxis->range();
-    range.lower = floor(range.lower -1);
-    range.upper = ceil(range.upper + 1);
-    plot->xAxis->setRange(range);
-
-    range = plot->yAxis->range();
-    range.lower = floor(range.lower - 1);
-    range.upper = ceil(range.upper + 1);
-    plot->yAxis->setRange(range);
-    plot->replot();
+    model.Clusters = clusters;
+    model.K = 4;
+    plot->model = &model;
+    plot->UpdatePlot();
 }

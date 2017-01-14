@@ -28,13 +28,15 @@ SOURCES += main.cpp\
     DataPoint.cpp \
     KMeansClustering.cpp \
     qcustomplot.cpp \
-    viewmodel.cpp
+    viewmodel.cpp \
+    customplot.cpp
 
 HEADERS += mainwindow.h \
     DataPoint.h \
     KMeansClustering.h \
     stdafx.h \
     qcustomplot.h \
-    viewmodel.h
+    viewmodel.h \
+    customplot.h
 
 FORMS += mainwindow.ui

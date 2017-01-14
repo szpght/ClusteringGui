@@ -1,11 +1,11 @@
 #pragma once
-#include <vector>
 #include "KMeansClustering.h"
 
 class ViewModel
 {
 public:
+    int K;
     DataVector Data;
-    IntVector Groups;
+    IntVector Clusters;
     std::vector<DataVector> GroupPaths;
 };

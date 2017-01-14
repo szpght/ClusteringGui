@@ -1,8 +1,7 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 #include "chartview.h"
 #include <QMainWindow>
-#include "qcustomplot.h"
+#include "customplot.h"
 #include "viewmodel.h"
 
 namespace Ui {
@@ -25,9 +24,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void setupChart();
-    QCustomPlot *plot;
-    void setupPlot();
+    CustomPlot *plot;
     void drawPlot(ViewModel *viewModel);
 };
 
-#endif // MAINWINDOW_H

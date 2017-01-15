@@ -76,3 +76,13 @@ void CustomPlot::_addPointsToGraph(QCPGraph *graph, DataVector points)
 		graph->addData(point.X(), point.Y());
 	}
 }
+
+
+void CustomPlot::mousePressEvent(QMouseEvent *ev)
+{
+	double x = xAxis->pixelToCoord(ev->x());
+	double y = yAxis->pixelToCoord(ev->y());
+	model->Data.push_back(DataPoint(x, y));
+	model->Clusters.push_back(0);
+	UpdatePlot();
+}

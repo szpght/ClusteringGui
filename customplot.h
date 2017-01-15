@@ -13,4 +13,5 @@ public:
 	void _fixAxes();
 	void _addAxisMargin(QCPAxis *axis);
 	void _addPointsToGraph(QCPGraph *graph, DataVector points);
+	void mousePressEvent(QMouseEvent *event);
 };

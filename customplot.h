@@ -9,4 +9,7 @@ public:
     ViewModel *model;
 
     void UpdatePlot();
+	QCPGraph* _newGraph(int index);
+	void _fixAxes();
+	void _addAxisMargin(QCPAxis *axis);
 };

@@ -7,6 +7,34 @@ CustomPlot::CustomPlot()
 }
 
 
+QCPGraph* CustomPlot::_newGraph(int index)
+{
+	auto newGraph = addGraph();
+	auto color = QColor(0x87 * index % 256, 0xf * index % 256, 0x57 * index % 256);
+	newGraph->setLineStyle(QCPGraph::lsNone);
+	newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, 12));
+	newGraph->setPen(QPen(color));
+	return newGraph;
+}
+
+
+void CustomPlot::_fixAxes()
+{
+	rescaleAxes();
+	_addAxisMargin(xAxis);
+	_addAxisMargin(yAxis);
+}
+
+
+void CustomPlot::_addAxisMargin(QCPAxis *axis)
+{
+	auto range = axis->range();
+	range.lower -= 1;
+	range.upper += 1;
+	axis->setRange(range);
+}
+
+
 void CustomPlot::UpdatePlot()
 {
     clearGraphs();
@@ -14,16 +42,11 @@ void CustomPlot::UpdatePlot()
     // create graph for each cluster
     for (int i = 0; i < model->K; ++i)
     {
-        auto newGraph = addGraph();
-        auto color = QColor(0x87 * i % 256, 0xf * i % 256, 0x57 * i % 256);
-        newGraph->setLineStyle(QCPGraph::lsNone);
-        //newGraph->setBrush(QBrush(color, Qt::SolidPattern));
-        newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, 12));
-        newGraph->setPen(QPen(color));
+		_newGraph(i);
     }
 
     // add points to graphs
-    for (int i = 0; i < model->K; ++i)
+    for (int i = 0; i < model->Data.size(); ++i)
     {
         int cluster = model->Clusters[i];
         auto currentGraph = graph(cluster);
@@ -31,15 +54,6 @@ void CustomPlot::UpdatePlot()
         currentGraph->addData(point.X(), point.Y());
     }
 
-    rescaleAxes();
-    auto range = xAxis->range();
-    range.lower = floor(range.lower -1);
-    range.upper = ceil(range.upper + 1);
-    xAxis->setRange(range);
-
-    range = yAxis->range();
-    range.lower = floor(range.lower - 1);
-    range.upper = ceil(range.upper + 1);
-    yAxis->setRange(range);
+	_fixAxes();
     replot();
 }

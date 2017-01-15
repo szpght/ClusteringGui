@@ -7,12 +7,12 @@ CustomPlot::CustomPlot()
 }
 
 
-QCPGraph* CustomPlot::_newGraph(int index)
+QCPGraph* CustomPlot::_newGraph(int index, QCPScatterStyle::ScatterShape shape)
 {
 	auto newGraph = addGraph();
 	auto color = QColor(0x87 * index % 256, 0xf * index % 256, 0x57 * index % 256);
 	newGraph->setLineStyle(QCPGraph::lsNone);
-	newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, 12));
+	newGraph->setScatterStyle(QCPScatterStyle(shape, color, color, 12));
 	newGraph->setPen(QPen(color));
 	return newGraph;
 }
@@ -37,12 +37,13 @@ void CustomPlot::_addAxisMargin(QCPAxis *axis)
 
 void CustomPlot::UpdatePlot()
 {
+	int graphIndex = 0;
     clearGraphs();
 
     // create graph for each cluster
-    for (int i = 0; i < model->K; ++i)
+    for (; graphIndex < model->K; ++graphIndex)
     {
-		_newGraph(i);
+		_newGraph(graphIndex, QCPScatterStyle::ssCircle);
     }
 
     // add points to graphs
@@ -54,6 +55,24 @@ void CustomPlot::UpdatePlot()
         currentGraph->addData(point.X(), point.Y());
     }
 
+	// add paths
+	for (auto path : model->GroupPaths)
+	{
+		auto newGraph = _newGraph(graphIndex, QCPScatterStyle::ssSquare);
+		graphIndex += 1;
+		newGraph->setLineStyle(QCPGraph::lsLine);
+		_addPointsToGraph(newGraph, path);
+	}
+
 	_fixAxes();
     replot();
+}
+
+
+void CustomPlot::_addPointsToGraph(QCPGraph *graph, DataVector points)
+{
+	for (auto point : points)
+	{
+		graph->addData(point.X(), point.Y());
+	}
 }

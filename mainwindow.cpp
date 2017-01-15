@@ -33,13 +33,11 @@ void MainWindow::on_pushButton_clicked()
     clusters.push_back(0);
     clusters.push_back(1);
     clusters.push_back(2);
-    clusters.push_back(3);
-    clusters.push_back(3);
-    ViewModel model;
-    model.Data = data;
-    model.Clusters = clusters;
-    model.K = 3;
-	model.GroupPaths.push_back(path);
-    plot->model = &model;
+	auto model = new ViewModel;
+    model->Data = data;
+    model->Clusters = clusters;
+    model->K = 3;
+	model->GroupPaths.push_back(path);
+    plot->model = model;
     plot->UpdatePlot();
 }

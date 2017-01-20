@@ -8,4 +8,5 @@ public:
     DataVector Data;
     IntVector Clusters;
     std::vector<DataVector> GroupPaths;
+    KMeansClustering program;
 };

@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     plot = new CustomPlot;
+    plot->model = new ViewModel;
     ui->gridLayout->addWidget(plot);
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>607</width>
-    <height>290</height>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -315,5 +315,57 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>addPointBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newPointFromField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newX</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newPointFromField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newY</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newPointFromField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>newPointFromField()</slot>
+ </slots>
 </ui>

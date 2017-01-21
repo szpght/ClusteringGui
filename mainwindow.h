@@ -18,18 +18,7 @@ public:
 
 private slots:
 
-
     void on_exitAction_triggered();
-
-    void on_groupNumberBtn_clicked();
-
-    void on_groupNumberEdit_returnPressed();
-
-    void on_addPointBtn_clicked();
-
-    void on_newX_returnPressed();
-
-    void on_newY_returnPressed();
 
 private:
     Ui::MainWindow *ui;
@@ -40,7 +29,9 @@ private:
     bool valueFromEdit(QLineEdit *edit, int *value);
     bool valueFromEdit(QLineEdit *edit, double *value);
     void badValueError();
-    void setGroupNumberFromField();
+
+public slots:
     void newPointFromField();
+    void setGroupNumberFromField();
 };
 

@@ -28,18 +28,6 @@ void MainWindow::on_exitAction_triggered()
 }
 
 
-void MainWindow::on_groupNumberBtn_clicked()
-{
-    setGroupNumberFromField();
-}
-
-
-void MainWindow::on_groupNumberEdit_returnPressed()
-{
-    setGroupNumberFromField();
-}
-
-
 void MainWindow::setGroupNumberFromField()
 {
     int k;
@@ -96,22 +84,4 @@ void MainWindow::newPointFromField()
         model->addPoint(x, y);
         plot->UpdatePlot();
     }
-}
-
-
-void MainWindow::on_addPointBtn_clicked()
-{
-    newPointFromField();
-}
-
-
-void MainWindow::on_newX_returnPressed()
-{
-    newPointFromField();
-}
-
-
-void MainWindow::on_newY_returnPressed()
-{
-    newPointFromField();
 }

@@ -19,6 +19,8 @@ public:
 private slots:
 
 
+    void on_exitAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

@@ -172,7 +172,7 @@
        </widget>
       </item>
       <item row="8" column="0">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="groupNumberEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>

@@ -20,6 +20,8 @@ private slots:
 
     void on_exitAction_triggered();
 
+    void on_fixedRangeChBox_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

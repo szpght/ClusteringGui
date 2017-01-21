@@ -64,7 +64,10 @@ void CustomPlot::UpdatePlot()
 		_addPointsToGraph(newGraph, path);
 	}
 
-	_fixAxes();
+    if (!model->FixedAxes)
+    {
+        _fixAxes();
+    }
     replot();
 }
 

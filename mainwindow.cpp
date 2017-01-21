@@ -85,3 +85,9 @@ void MainWindow::newPointFromField()
         plot->UpdatePlot();
     }
 }
+
+
+void MainWindow::on_fixedRangeChBox_clicked(bool checked)
+{
+    model->FixedAxes = checked;
+}

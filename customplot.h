@@ -5,7 +5,7 @@
 class CustomPlot : public QCustomPlot
 {
 public:
-    CustomPlot();
+    CustomPlot(QWidget* parent);
     ViewModel *model;
 
     void UpdatePlot();

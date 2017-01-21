@@ -6,94 +6,225 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>637</width>
-    <height>381</height>
+    <width>607</width>
+    <height>290</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>K-Means Clustering</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="3">
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Zatwierdź</string>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="controlGrid">
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="newY">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Zakres Y</string>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="fixedRangeChBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="checkBox">
         <property name="text">
          <string>Sztywny zakres</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
         </property>
         <property name="tristate">
          <bool>false</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
+      <item row="6" column="0">
+       <widget class="QLineEdit" name="newX">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Zakres X</string>
+         <string>Zakres Y</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
-      <item row="1" column="3">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="confirmRangeBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Zatwierdź</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-      <item row="3" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Nowy punkt</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_5"/>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLineEdit" name="lineEdit_6"/>
-      </item>
-      <item row="3" column="3">
-       <widget class="QPushButton" name="pushButton_3">
+      <item row="5" column="1">
+       <widget class="QPushButton" name="addPointBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Dodaj</string>
         </property>
        </widget>
       </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="maxYEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="minXEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Zakres X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="maxXEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLineEdit" name="minYEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Ilość grup</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="groupNumberBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Zatwierdź</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QPushButton" name="calculateBtn">
+        <property name="text">
+         <string>Oblicz grupy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QPushButton" name="stepBtn">
+        <property name="text">
+         <string>Kolejny krok</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
-    <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+    <item row="0" column="1">
+     <widget class="CustomPlot" name="plot" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -102,50 +233,49 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>637</width>
+     <width>607</width>
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuPlik">
+   <widget class="QMenu" name="fileMenu">
     <property name="title">
      <string>Plik</string>
     </property>
-    <addaction name="actionRob_cos"/>
-    <addaction name="actionWczytaj_z_pliku"/>
-    <addaction name="actionZapisz_do_pliku"/>
-    <addaction name="actionWyj_cie"/>
+    <addaction name="clearAction"/>
+    <addaction name="openAction"/>
+    <addaction name="saveAction"/>
+    <addaction name="exitAction"/>
    </widget>
-   <widget class="QMenu" name="menuPomoc">
+   <widget class="QMenu" name="helpMenu">
     <property name="title">
      <string>Pomoc</string>
     </property>
-    <addaction name="actionO_programie"/>
-    <addaction name="actionLicencja"/>
+    <addaction name="aboutAction"/>
    </widget>
-   <addaction name="menuPlik"/>
-   <addaction name="menuPomoc"/>
+   <addaction name="fileMenu"/>
+   <addaction name="helpMenu"/>
   </widget>
-  <action name="actionRob_cos">
+  <action name="clearAction">
    <property name="text">
     <string>Wyczyść</string>
    </property>
   </action>
-  <action name="actionWczytaj_z_pliku">
+  <action name="openAction">
    <property name="text">
     <string>Wczytaj z pliku</string>
    </property>
   </action>
-  <action name="actionZapisz_do_pliku">
+  <action name="saveAction">
    <property name="text">
     <string>Zapisz do pliku</string>
    </property>
   </action>
-  <action name="actionWyj_cie">
+  <action name="exitAction">
    <property name="text">
     <string>Wyjście</string>
    </property>
   </action>
-  <action name="actionO_programie">
+  <action name="aboutAction">
    <property name="text">
     <string>O programie</string>
    </property>
@@ -157,6 +287,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CustomPlot</class>
+   <extends>QWidget</extends>
+   <header>customplot.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

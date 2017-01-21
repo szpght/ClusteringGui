@@ -1,6 +1,6 @@
 #include "customplot.h"
 
-CustomPlot::CustomPlot()
+CustomPlot::CustomPlot(QWidget* parent) : QCustomPlot(parent)
 {
     xAxis->setLabel("x");
     yAxis->setLabel("y");

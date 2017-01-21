@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>607</width>
-    <height>298</height>
+    <height>325</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,44 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <layout class="QGridLayout" name="controlGrid">
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="newY">
+      <item row="9" column="0">
+       <widget class="QPushButton" name="calculateBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Oblicz grupy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Ilość grup</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLineEdit" name="minYEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLineEdit" name="groupNumberEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -43,8 +79,8 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QLineEdit" name="newX">
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="newY">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -53,16 +89,13 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_2">
+      <item row="6" column="0">
+       <widget class="QLineEdit" name="newX">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Zakres Y</string>
         </property>
        </widget>
       </item>
@@ -79,6 +112,19 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Zakres Y</string>
+        </property>
+       </widget>
+      </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_3">
         <property name="sizePolicy">
@@ -89,19 +135,6 @@
         </property>
         <property name="text">
          <string>Nowy punkt</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QPushButton" name="addPointBtn">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Dodaj</string>
         </property>
        </widget>
       </item>
@@ -122,6 +155,19 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QPushButton" name="addPointBtn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Dodaj</string>
         </property>
        </widget>
       </item>
@@ -148,18 +194,8 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLineEdit" name="minYEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_4">
+      <item row="10" column="0">
+       <widget class="QPushButton" name="newCalculationBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -167,34 +203,11 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Ilość grup</string>
+         <string>Od nowa</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="0">
-       <widget class="QLineEdit" name="groupNumberEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QPushButton" name="calculateBtn">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Oblicz grupy</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
+      <item row="10" column="1">
        <widget class="QPushButton" name="stepBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -207,7 +220,7 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="8" column="1">
        <widget class="QPushButton" name="groupNumberBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -217,19 +230,6 @@
         </property>
         <property name="text">
          <string>Zatwierdź</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="newCalculationBtn">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Od nowa</string>
         </property>
        </widget>
       </item>
@@ -364,8 +364,41 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>groupNumberBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setGroupNumberFromField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupNumberEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setGroupNumberFromField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newPointFromField()</slot>
+  <slot>setGroupNumberFromField()</slot>
  </slots>
 </ui>

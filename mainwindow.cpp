@@ -11,8 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     plot = new CustomPlot;
+    plot->setMinimumHeight(300);
+    plot->setMinimumWidth(300);
     plot->model = new ViewModel;
-    ui->gridLayout->addWidget(plot);
+    ui->gridLayout_3->addWidget(plot);
+    ui->gridLayout_2->set
 }
 
 

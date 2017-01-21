@@ -25,15 +25,22 @@ private slots:
 
     void on_groupNumberEdit_returnPressed();
 
+    void on_addPointBtn_clicked();
+
+    void on_newX_returnPressed();
+
+    void on_newY_returnPressed();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();
     CustomPlot *plot;
     ViewModel *model;
     void drawPlot(ViewModel *viewModel);
-    bool setValueFromEdit(QLineEdit *edit, int *value);
-    bool setValueFromEdit(QLineEdit *edit, double *value);
+    bool valueFromEdit(QLineEdit *edit, int *value);
+    bool valueFromEdit(QLineEdit *edit, double *value);
     void badValueError();
     void setGroupNumberFromField();
+    void newPointFromField();
 };
 

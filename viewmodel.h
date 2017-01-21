@@ -9,4 +9,6 @@ public:
     IntVector Clusters;
     std::vector<DataVector> GroupPaths;
     KMeansClustering program;
+
+    void addPoint(double x, double y);
 };

@@ -43,7 +43,7 @@ void MainWindow::on_groupNumberEdit_returnPressed()
 void MainWindow::setGroupNumberFromField()
 {
     int k;
-    if (setValueFromEdit(ui->groupNumberEdit, &k) && k > 0)
+    if (valueFromEdit(ui->groupNumberEdit, &k) && k > 0)
     {
         model->K = k;
     }
@@ -54,7 +54,7 @@ void MainWindow::setGroupNumberFromField()
 }
 
 
-bool MainWindow::setValueFromEdit(QLineEdit *edit, int *value)
+bool MainWindow::valueFromEdit(QLineEdit *edit, int *value)
 {
     bool ok;
     int result = edit->text().toInt(&ok);
@@ -68,7 +68,7 @@ bool MainWindow::setValueFromEdit(QLineEdit *edit, int *value)
 }
 
 
-bool MainWindow::setValueFromEdit(QLineEdit *edit, double *value)
+bool MainWindow::valueFromEdit(QLineEdit *edit, double *value)
 {
     bool ok;
     int result = edit->text().toDouble(&ok);
@@ -85,4 +85,33 @@ bool MainWindow::setValueFromEdit(QLineEdit *edit, double *value)
 void MainWindow::badValueError()
 {
     QMessageBox::critical(nullptr, "Błąd", "Niepoprawna wartość");
+}
+
+
+void MainWindow::newPointFromField()
+{
+    double x, y;
+    if (valueFromEdit(ui->newX, &x) && valueFromEdit(ui->newY, &y))
+    {
+        model->addPoint(x, y);
+        plot->UpdatePlot();
+    }
+}
+
+
+void MainWindow::on_addPointBtn_clicked()
+{
+    newPointFromField();
+}
+
+
+void MainWindow::on_newX_returnPressed()
+{
+    newPointFromField();
+}
+
+
+void MainWindow::on_newY_returnPressed()
+{
+    newPointFromField();
 }

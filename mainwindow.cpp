@@ -110,3 +110,23 @@ void MainWindow::on_fixedRangeChBox_clicked(bool checked)
     model->FixedAxes = checked;
     updatePlot();
 }
+
+
+void MainWindow::setRanges()
+{
+    double minX, minY, maxX, maxY;
+    if (
+        valueFromEdit(ui->minXEdit, &minX) &&
+        valueFromEdit(ui->maxXEdit, &maxX) &&
+        valueFromEdit(ui->minYEdit, &minY) &&
+        valueFromEdit(ui->maxYEdit, &maxY)
+    )
+    {
+        model->rangeXMin = minX;
+        model->rangeXMax = maxX;
+        model->rangeYMin = minY;
+        model->rangeYMax = maxY;
+        model->FixedAxes = true;
+        updatePlot();
+    }
+}

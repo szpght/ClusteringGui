@@ -396,9 +396,90 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>minXEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>minYEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>maxXEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>maxYEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>confirmRangeBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newPointFromField()</slot>
   <slot>setGroupNumberFromField()</slot>
+  <slot>setRanges()</slot>
  </slots>
 </ui>

@@ -37,5 +37,6 @@ private:
 public slots:
     void newPointFromField();
     void setGroupNumberFromField();
+    void setRanges();
 };
 

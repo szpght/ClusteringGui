@@ -139,3 +139,16 @@ void MainWindow::on_clearAction_triggered()
     model->GroupPaths.clear();
     updatePlot();
 }
+
+void MainWindow::on_aboutAction_triggered()
+{
+    auto msg = QString(
+                "Program dzieli podany zbiór dwuwymiarowych punktów na klastry "
+                "za pomocą algorytmu k-means clustering. Możliwe jest śledzenie "
+                "krok po kroku jak zmienia się położenie centroidów oraz przydział "
+                "punktów do klastrów po każdej iteracji algorytmu, a także "
+                "wczytywanie i zapisywanie danych do pliku.\n\n"
+                "Copyrigth Paweł Pietrasz 2017\n"
+                "Licencja GNU GPL 3");
+    QMessageBox::information(this, "O programie", msg);
+}

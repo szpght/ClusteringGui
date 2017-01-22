@@ -25,6 +25,8 @@ private slots:
 
     void on_clearAction_triggered();
 
+    void on_aboutAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

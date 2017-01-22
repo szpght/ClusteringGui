@@ -2,7 +2,8 @@
 
 ViewModel::ViewModel()
 {
-
+    Program.Data(&Data);
+    Program.Clusters(&Clusters);
 }
 
 void ViewModel::addPoint(double x, double y)

@@ -9,7 +9,7 @@ public:
     DataVector Data;
     IntVector Clusters;
     std::vector<DataVector> GroupPaths;
-    KMeansClustering program;
+    KMeansClustering Program;
     bool FixedAxes = Settings::FixedAxes;
     double rangeXMin = Settings::RangeXMin;
     double rangeXMax = Settings::RangeXMax;

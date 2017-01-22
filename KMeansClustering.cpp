@@ -2,6 +2,7 @@
 #include "KMeansClustering.h"
 using namespace std;
 
+// TODO usunac
 KMeansClustering::KMeansClustering()
 {
 	_data = new DataVector;
@@ -28,9 +29,9 @@ const DataVector & KMeansClustering::Data() const
 	return *_data;
 }
 
-void KMeansClustering::Data(DataVector data)
+void KMeansClustering::Data(DataVector *data)
 {
-	*_data = data;
+    _data = data;
 }
 
 const DataVector& KMeansClustering::Centroids() const
@@ -43,12 +44,17 @@ const IntVector& KMeansClustering::Clusters() const
 	return *_clusters;
 }
 
+void KMeansClustering::Clusters(IntVector *clusters)
+{
+    _clusters = clusters;
+}
+
 void KMeansClustering::Init()
 {
-	if (_data->size() < _k)
-		throw string("there cannot be more clusters than points");
+	//if (_data->size() < _k)
+	//	throw string("there cannot be more clusters than points");
 
-	// use first data points as initial centroids
+	// if centroid not present, use corresponding data point as centroid
 	_centroids.clear();
 	for (int i = 0; i < _k; ++i)
 	{
@@ -64,6 +70,10 @@ bool KMeansClustering::NextStep()
 {
 	_oldClusters = *_clusters;
 
+	// make sure that number of clusters corresponds with number of points
+	_clusters->resize(_data->size(), 0);
+
+	
 	determineCentroids();
 	assignToClusters();
 

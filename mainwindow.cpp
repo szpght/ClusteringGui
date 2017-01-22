@@ -10,9 +10,27 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    initializeGui();
+}
+
+
+void MainWindow::initializeGui()
+{
     plot = ui->plot;
     model = new ViewModel;
     plot->model = model;
+    updatePlot();
+}
+
+
+void MainWindow::updatePlot()
+{
+    plot->UpdatePlot();
+    ui->fixedRangeChBox->setChecked(model->FixedAxes);
+    ui->minXEdit->setText(QString::number(model->rangeXMin));
+    ui->maxXEdit->setText(QString::number(model->rangeXMax));
+    ui->minYEdit->setText(QString::number(model->rangeYMin));
+    ui->maxYEdit->setText(QString::number(model->rangeYMax));
 }
 
 
@@ -82,7 +100,7 @@ void MainWindow::newPointFromField()
     if (valueFromEdit(ui->newX, &x) && valueFromEdit(ui->newY, &y))
     {
         model->addPoint(x, y);
-        plot->UpdatePlot();
+        updatePlot();
     }
 }
 
@@ -90,5 +108,5 @@ void MainWindow::newPointFromField()
 void MainWindow::on_fixedRangeChBox_clicked(bool checked)
 {
     model->FixedAxes = checked;
-    plot->UpdatePlot();
+    updatePlot();
 }

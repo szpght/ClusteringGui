@@ -1,5 +1,6 @@
 #pragma once
 #include "KMeansClustering.h"
+#include "settings.h"
 
 class ViewModel
 {
@@ -9,7 +10,12 @@ public:
     IntVector Clusters;
     std::vector<DataVector> GroupPaths;
     KMeansClustering program;
-    bool FixedAxes = 0;
+    bool FixedAxes = Settings::FixedAxes;
+    double rangeXMin = Settings::RangeXMin;
+    double rangeXMax = Settings::RangeXMax;
+    double rangeYMin = Settings::RangeYMin;
+    double rangeYMax = Settings::RangeYMax;
 
+    ViewModel();
     void addPoint(double x, double y);
 };

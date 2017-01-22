@@ -37,6 +37,7 @@ HEADERS += mainwindow.h \
     stdafx.h \
     qcustomplot.h \
     viewmodel.h \
-    customplot.h
+    customplot.h \
+    settings.h
 
 FORMS += mainwindow.ui

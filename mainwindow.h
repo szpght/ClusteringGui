@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void updatePlot();
 
 private slots:
 
@@ -31,6 +32,7 @@ private:
     bool valueFromEdit(QLineEdit *edit, int *value);
     bool valueFromEdit(QLineEdit *edit, double *value);
     void badValueError();
+    void initializeGui();
 
 public slots:
     void newPointFromField();

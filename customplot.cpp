@@ -1,4 +1,5 @@
 #include "customplot.h"
+#include "mainwindow.h"
 
 CustomPlot::CustomPlot(QWidget* parent) : QCustomPlot(parent)
 {
@@ -64,9 +65,20 @@ void CustomPlot::UpdatePlot()
 		_addPointsToGraph(newGraph, path);
 	}
 
-    if (!model->FixedAxes)
+    if (model->FixedAxes)
+    {
+        xAxis->setRange(model->rangeXMin, model->rangeXMax);
+        yAxis->setRange(model->rangeYMin, model->rangeYMax);
+    }
+    else
     {
         _fixAxes();
+        auto xRange = xAxis->range();
+        auto yRange = yAxis->range();
+        model->rangeXMin = xRange.lower;
+        model->rangeXMax = xRange.upper;
+        model->rangeYMin = yRange.lower;
+        model->rangeYMax = yRange.upper;
     }
     replot();
 }
@@ -86,6 +98,7 @@ void CustomPlot::mousePressEvent(QMouseEvent *ev)
 	double x = xAxis->pixelToCoord(ev->x());
 	double y = yAxis->pixelToCoord(ev->y());
 	model->Data.push_back(DataPoint(x, y));
-	model->Clusters.push_back(0);
-	UpdatePlot();
+    model->Clusters.push_back(0);
+    auto mainWindow = (MainWindow*) this->parent()->parent();
+    mainWindow->updatePlot();
 }

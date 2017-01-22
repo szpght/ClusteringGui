@@ -59,7 +59,7 @@ bool MainWindow::valueFromEdit(QLineEdit *edit, int *value)
 bool MainWindow::valueFromEdit(QLineEdit *edit, double *value)
 {
     bool ok;
-    int result = edit->text().toDouble(&ok);
+    double result = edit->text().toDouble(&ok);
     if (!ok)
     {
         badValueError();
@@ -90,4 +90,5 @@ void MainWindow::newPointFromField()
 void MainWindow::on_fixedRangeChBox_clicked(bool checked)
 {
     model->FixedAxes = checked;
+    plot->UpdatePlot();
 }

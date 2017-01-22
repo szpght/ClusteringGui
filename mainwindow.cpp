@@ -31,6 +31,7 @@ void MainWindow::updatePlot()
     ui->maxXEdit->setText(QString::number(model->rangeXMax));
     ui->minYEdit->setText(QString::number(model->rangeYMin));
     ui->maxYEdit->setText(QString::number(model->rangeYMax));
+    ui->groupNumberEdit->setText(QString::number(model->K));
 }
 
 
@@ -129,4 +130,12 @@ void MainWindow::setRanges()
         model->FixedAxes = true;
         updatePlot();
     }
+}
+
+void MainWindow::on_clearAction_triggered()
+{
+    model->Clusters.clear();
+    model->Data.clear();
+    model->GroupPaths.clear();
+    updatePlot();
 }

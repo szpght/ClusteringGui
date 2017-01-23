@@ -192,7 +192,11 @@ void MainWindow::on_newCalculationBtn_clicked()
 
 void MainWindow::on_openAction_triggered()
 {
-    auto fileName = QFileDialog::getOpenFileName(this, "Wybierz plik do wczytania", "", "Pliki tekstowe (*.txt)");
+    auto fileName = QFileDialog::getOpenFileName(this, "Wybierz plik do wczytania", "", "Pliki tekstowe (*.txt);;Wszystkie pliki (*.*)");
+    if (fileName.length() == 0)
+    {
+        return;
+    }
     std::ifstream file(qPrintable(fileName));
     if (!file.is_open())
     {
@@ -211,7 +215,11 @@ void MainWindow::on_openAction_triggered()
 
 void MainWindow::on_saveAction_triggered()
 {
-    auto fileName = QFileDialog::getSaveFileName(this, "Wybierz plik do zapisania", "", "Pliki tekstowe (*.txt)");
+    auto fileName = QFileDialog::getSaveFileName(this, "Wybierz plik do zapisania", "", "Pliki tekstowe (*.txt);;Wszystkie pliki (*.*)");
+    if (fileName.length() == 0)
+    {
+        return;
+    }
     std::ofstream file(qPrintable(fileName));
     if (!file.is_open())
     {
@@ -224,4 +232,22 @@ void MainWindow::on_saveAction_triggered()
         file << point.X() << " " << point.Y() << "\n";
     }
     file.close();
+}
+
+void MainWindow::on_savePlotAction_triggered()
+{
+    auto fileName = QFileDialog::getSaveFileName(this, "Wybierz plik do zapisania", "", "Pliki PNG (*.png);;Wszystkie pliki (*.*)");
+    if (fileName.length() == 0)
+    {
+        return;
+    }
+    bool success;
+    if (fileName.length())
+    {
+        success = plot->savePng(fileName, 0, 0, 1, 0);
+    }
+    if (!success)
+    {
+        QMessageBox::critical(this, "Błąd", "Zapis nieudany");
+    }
 }

@@ -269,6 +269,7 @@
     <addaction name="clearAction"/>
     <addaction name="openAction"/>
     <addaction name="saveAction"/>
+    <addaction name="savePlotAction"/>
     <addaction name="exitAction"/>
    </widget>
    <widget class="QMenu" name="helpMenu">
@@ -303,6 +304,11 @@
   <action name="aboutAction">
    <property name="text">
     <string>O programie</string>
+   </property>
+  </action>
+  <action name="savePlotAction">
+   <property name="text">
+    <string>Zapisz wykres</string>
    </property>
   </action>
  </widget>

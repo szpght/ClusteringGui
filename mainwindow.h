@@ -35,6 +35,8 @@ private slots:
 
     void on_saveAction_triggered();
 
+    void on_savePlotAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

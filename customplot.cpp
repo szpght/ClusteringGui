@@ -61,7 +61,7 @@ void CustomPlot::UpdatePlot()
     // create graph for every path
     for (int i = 0; i < model->K; ++i)
     {
-        auto newGraph = _newGraph(graphIndex + i, QCPScatterStyle::ssSquare);
+        auto newGraph = _newGraph(i, QCPScatterStyle::ssSquare);
         newGraph->setLineStyle(QCPGraph::lsLine);
         for (int j = 0; j < model->GroupPaths.size(); ++j)
         {
@@ -87,15 +87,6 @@ void CustomPlot::UpdatePlot()
     }
     setAntialiasedElements(QCP::aeAll);
     replot();
-}
-
-
-void CustomPlot::_addPointsToGraph(QCPGraph *graph, DataVector points)
-{
-    for (auto point : points)
-    {
-        graph->addData(point.X(), point.Y());
-    }
 }
 
 

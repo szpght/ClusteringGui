@@ -57,13 +57,24 @@ void CustomPlot::UpdatePlot()
     }
 
 	// add paths
-	for (auto path : model->GroupPaths)
+    // create graph for every path
+    for (int i = 0; i < model->K; ++i)
+    {
+        auto newGraph = _newGraph(graphIndex + i, QCPScatterStyle::ssSquare);
+        newGraph->setLineStyle(QCPGraph::lsLine);
+        for (int j = 0; j < model->GroupPaths.size(); ++j)
+        {
+            auto point = model->GroupPaths[j][i];
+            graph(graphIndex + i)->addData(point.X(), point.Y());
+        }
+    }
+    /*for (auto path : model->GroupPaths)
 	{
 		auto newGraph = _newGraph(graphIndex, QCPScatterStyle::ssSquare);
 		graphIndex += 1;
 		newGraph->setLineStyle(QCPGraph::lsLine);
 		_addPointsToGraph(newGraph, path);
-	}
+    }*/
 
     if (model->FixedAxes)
     {

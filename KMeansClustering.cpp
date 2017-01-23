@@ -77,7 +77,7 @@ bool KMeansClustering::NextStep()
 	determineCentroids();
 	assignToClusters();
 
-	return !(_oldClusters == *_clusters);
+    return _oldClusters != *_clusters;
 }
 
 void KMeansClustering::determineCentroids()
@@ -100,8 +100,12 @@ void KMeansClustering::determineCentroids()
 	{
 		auto & centroid = _centroids[i];
 		int z = sumElements[i];
-		centroid.X(centroid.X() / z);
-		centroid.Y(centroid.Y() / z);
+        if (z)
+        {
+            centroid.X(centroid.X() / z);
+            centroid.Y(centroid.Y() / z);
+        }
+
 	}
 }
 

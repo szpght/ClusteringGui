@@ -155,8 +155,13 @@ void MainWindow::on_aboutAction_triggered()
 
 void MainWindow::on_stepBtn_clicked()
 {
+    static bool lastResult = true;
     bool result = model->Program.NextStep();
-    auto centroids = model->Program.Centroids();
-    model->GroupPaths.push_back(centroids);
-    updatePlot();
+    if (result || lastResult)
+    {
+        auto centroids = model->Program.Centroids();
+        model->GroupPaths.push_back(centroids);
+        updatePlot();
+    }
+    lastResult = result;
 }

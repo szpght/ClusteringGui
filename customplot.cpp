@@ -9,12 +9,29 @@ CustomPlot::CustomPlot(QWidget* parent) : QCustomPlot(parent)
 }
 
 
-QCPGraph* CustomPlot::_newGraph(int index, QCPScatterStyle::ScatterShape shape)
+QColor CustomPlot::_color(int index)
+{
+    return QColor(0x87 * index % 256, 0xf * index % 256, 0x57 * index % 256);
+}
+
+
+QCPGraph* CustomPlot::_newGraph(int index)
 {
     auto newGraph = addGraph();
-    auto color = QColor(0x87 * index % 256, 0xf * index % 256, 0x57 * index % 256);
+    auto color = _color(index);
     newGraph->setLineStyle(QCPGraph::lsNone);
-    newGraph->setScatterStyle(QCPScatterStyle(shape, color, color, 12));
+    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, 8));
+    newGraph->setPen(QPen(color));
+    return newGraph;
+}
+
+
+QCPGraph* CustomPlot::_newPathGraph(int index)
+{
+    auto newGraph = addGraph();
+    auto color = _color(index);
+    newGraph->setLineStyle(QCPGraph::lsLine);
+    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, 12));
     newGraph->setPen(QPen(color));
     return newGraph;
 }
@@ -45,7 +62,7 @@ void CustomPlot::UpdatePlot()
     // create graph for each cluster
     for (; graphIndex < model->K; ++graphIndex)
     {
-        _newGraph(graphIndex, QCPScatterStyle::ssCircle);
+        _newGraph(graphIndex);
     }
 
     // add points to graphs
@@ -65,8 +82,7 @@ void CustomPlot::UpdatePlot()
     {
         for (int i = 0; i < model->K; ++i)
         {
-            auto newGraph = _newGraph(i, QCPScatterStyle::ssSquare);
-            newGraph->setLineStyle(QCPGraph::lsLine);
+            auto newGraph = _newPathGraph(i);
             auto point = groupPaths[0][i];
             graph(graphIndex + i)->addData(point.X(), point.Y());
         }
@@ -78,7 +94,7 @@ void CustomPlot::UpdatePlot()
         {
             for (int j = 0; j < model->K; ++j)
             {
-                auto newGraph = _newGraph(j, QCPScatterStyle::ssSquare);
+                auto newGraph = _newPathGraph(j);
                 newGraph->setLineStyle(QCPGraph::lsLine);
                 auto point1 = groupPaths[i][j];
                 auto point2 = groupPaths[i + 1][j];

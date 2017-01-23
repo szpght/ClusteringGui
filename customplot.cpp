@@ -26,12 +26,12 @@ QCPGraph* CustomPlot::_newGraph(int index)
 }
 
 
-QCPGraph* CustomPlot::_newPathGraph(int index)
+QCPGraph* CustomPlot::_newPathGraph(int index, int size)
 {
     auto newGraph = addGraph();
     auto color = _color(index);
     newGraph->setLineStyle(QCPGraph::lsLine);
-    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, Settings::PathPointSize));
+    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, size));
     newGraph->setPen(QPen(color));
     return newGraph;
 }
@@ -88,9 +88,10 @@ void CustomPlot::UpdatePlot()
         }
     }
     // with more than one point a graph is needed for every step
-    else
+    else if (groupPaths.size() > 1)
     {
-        for (int i = 0; i + 1< groupPaths.size(); ++i)
+        int i;
+        for (i = 0; i + 1< groupPaths.size(); ++i)
         {
             for (int j = 0; j < model->K; ++j)
             {
@@ -100,6 +101,14 @@ void CustomPlot::UpdatePlot()
                 newGraph->addData(point1.X(), point1.Y());
                 newGraph->addData(point2.X(), point2.Y());
             }
+        }
+
+        // make current centroids bigger
+        for (int j = 0; j < model->K; ++j)
+        {
+            auto newGraph = _newPathGraph(j, Settings::LastPathPointSize);
+            auto point = groupPaths[i][j];
+            newGraph->addData(point.X(), point.Y());
         }
     }
 

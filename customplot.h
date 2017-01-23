@@ -11,7 +11,7 @@ public:
     void UpdatePlot();
     QColor _color(int index);
     QCPGraph* _newGraph(int index);
-    QCPGraph* _newPathGraph(int index);
+    QCPGraph* _newPathGraph(int index, int size = Settings::PathPointSize);
     void _fixAxes();
     void _addAxisMargin(QCPAxis *axis);
     void _addPointsToGraph(QCPGraph *graph, DataVector points);

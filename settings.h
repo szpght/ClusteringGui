@@ -8,5 +8,6 @@ namespace Settings
     const double RangeYMax = 5;
     const bool FixedAxes = true;
     const int DataPointSize = 8;
-    const int PathPointSize = 12;
+    const int PathPointSize = 9;
+    const int LastPathPointSize = 12;
 }

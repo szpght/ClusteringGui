@@ -58,15 +58,33 @@ void CustomPlot::UpdatePlot()
     }
 
     // add paths
-    // create graph for every path
-    for (int i = 0; i < model->K; ++i)
+    auto & groupPaths = model->GroupPaths;
+
+    // case with only one step
+    if (groupPaths.size() == 1)
     {
-        auto newGraph = _newGraph(i, QCPScatterStyle::ssSquare);
-        newGraph->setLineStyle(QCPGraph::lsLine);
-        for (int j = 0; j < model->GroupPaths.size(); ++j)
+        for (int i = 0; i < model->K; ++i)
         {
-            auto point = model->GroupPaths[j][i];
+            auto newGraph = _newGraph(i, QCPScatterStyle::ssSquare);
+            newGraph->setLineStyle(QCPGraph::lsLine);
+            auto point = groupPaths[0][i];
             graph(graphIndex + i)->addData(point.X(), point.Y());
+        }
+    }
+    // with more than one point a graph is needed for every step
+    else
+    {
+        for (int i = 0; i + 1< groupPaths.size(); ++i)
+        {
+            for (int j = 0; j < model->K; ++j)
+            {
+                auto newGraph = _newGraph(j, QCPScatterStyle::ssSquare);
+                newGraph->setLineStyle(QCPGraph::lsLine);
+                auto point1 = groupPaths[i][j];
+                auto point2 = groupPaths[i + 1][j];
+                newGraph->addData(point1.X(), point1.Y());
+                newGraph->addData(point2.X(), point2.Y());
+            }
         }
     }
 

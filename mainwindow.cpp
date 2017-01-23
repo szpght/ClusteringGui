@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include <QtCharts/QScatterSeries>
 #include <cmath>
+#include <fstream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -133,7 +134,7 @@ void MainWindow::setRanges()
     }
 }
 
-void MainWindow::on_clearAction_triggered()
+void MainWindow::clearPlot()
 {
     model->Clusters.clear();
     model->Data.clear();
@@ -187,4 +188,23 @@ void MainWindow::on_newCalculationBtn_clicked()
 {
     model->setK(model->K);
     plot->UpdatePlot();
+}
+
+void MainWindow::on_openAction_triggered()
+{
+    auto fileName = QFileDialog::getOpenFileName(this, "Dane do wczytania", "", "Text files (*.txt)");
+    std::ifstream file(qPrintable(fileName));
+    if (!file.is_open())
+    {
+        QMessageBox::critical(this, "Błąd", "Nie udało się otworzyć pliku");
+        return;
+    }
+
+    clearPlot();
+    double x, y;
+    while (file >> x >> y)
+    {
+        model->addPoint(x, y);
+    }
+    updatePlot();
 }

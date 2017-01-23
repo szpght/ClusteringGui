@@ -476,10 +476,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>clearAction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearPlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newPointFromField()</slot>
   <slot>setGroupNumberFromField()</slot>
   <slot>setRanges()</slot>
+  <slot>clearPlot()</slot>
  </slots>
 </ui>

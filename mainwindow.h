@@ -23,8 +23,6 @@ private slots:
 
     void on_fixedRangeChBox_clicked(bool checked);
 
-    void on_clearAction_triggered();
-
     void on_aboutAction_triggered();
 
     void on_stepBtn_clicked();
@@ -32,6 +30,8 @@ private slots:
     void on_calculateBtn_clicked();
 
     void on_newCalculationBtn_clicked();
+
+    void on_openAction_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -48,5 +48,6 @@ public slots:
     void newPointFromField();
     void setGroupNumberFromField();
     void setRanges();
+    void clearPlot();
 };
 

@@ -20,7 +20,7 @@ QCPGraph* CustomPlot::_newGraph(int index)
     auto newGraph = addGraph();
     auto color = _color(index);
     newGraph->setLineStyle(QCPGraph::lsNone);
-    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, 8));
+    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color, color, Settings::DataPointSize));
     newGraph->setPen(QPen(color));
     return newGraph;
 }
@@ -31,7 +31,7 @@ QCPGraph* CustomPlot::_newPathGraph(int index)
     auto newGraph = addGraph();
     auto color = _color(index);
     newGraph->setLineStyle(QCPGraph::lsLine);
-    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, 12));
+    newGraph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare, color, color, Settings::PathPointSize));
     newGraph->setPen(QPen(color));
     return newGraph;
 }
@@ -95,7 +95,6 @@ void CustomPlot::UpdatePlot()
             for (int j = 0; j < model->K; ++j)
             {
                 auto newGraph = _newPathGraph(j);
-                newGraph->setLineStyle(QCPGraph::lsLine);
                 auto point1 = groupPaths[i][j];
                 auto point2 = groupPaths[i + 1][j];
                 newGraph->addData(point1.X(), point1.Y());

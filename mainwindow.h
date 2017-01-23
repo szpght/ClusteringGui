@@ -31,6 +31,8 @@ private slots:
 
     void on_calculateBtn_clicked();
 
+    void on_newCalculationBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

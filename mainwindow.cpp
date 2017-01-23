@@ -182,3 +182,9 @@ void MainWindow::on_calculateBtn_clicked()
         updatePlot();
     } while (result);
 }
+
+void MainWindow::on_newCalculationBtn_clicked()
+{
+    model->setK(model->K);
+    plot->UpdatePlot();
+}

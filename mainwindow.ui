@@ -287,12 +287,12 @@
   </action>
   <action name="openAction">
    <property name="text">
-    <string>Wczytaj z pliku</string>
+    <string>Wczytaj dane</string>
    </property>
   </action>
   <action name="saveAction">
    <property name="text">
-    <string>Zapisz do pliku</string>
+    <string>Zapisz dane</string>
    </property>
   </action>
   <action name="exitAction">

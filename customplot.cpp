@@ -85,6 +85,7 @@ void CustomPlot::UpdatePlot()
         model->rangeYMin = yRange.lower;
         model->rangeYMax = yRange.upper;
     }
+    setAntialiasedElements(QCP::aeAll);
     replot();
 }
 

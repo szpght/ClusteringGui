@@ -9,7 +9,7 @@ ViewModel::ViewModel()
 void ViewModel::addPoint(double x, double y)
 {
     Data.push_back(DataPoint(x, y));
-    Clusters.push_back(0);
+    Clusters.push_back(rand() % K);
 }
 
 void ViewModel::setK(int k)

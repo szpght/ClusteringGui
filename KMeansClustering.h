@@ -8,7 +8,7 @@ using IntVector = std::vector<int>;
 class KMeansClustering
 {
 private:
-    int _k = 1;
+    int _k = 2;
     DataVector _centroids, *_data = nullptr;
     IntVector _oldClusters, *_clusters = nullptr;
 

@@ -33,6 +33,8 @@ private slots:
 
     void on_openAction_triggered();
 
+    void on_saveAction_triggered();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

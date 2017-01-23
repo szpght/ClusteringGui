@@ -192,7 +192,7 @@ void MainWindow::on_newCalculationBtn_clicked()
 
 void MainWindow::on_openAction_triggered()
 {
-    auto fileName = QFileDialog::getOpenFileName(this, "Dane do wczytania", "", "Text files (*.txt)");
+    auto fileName = QFileDialog::getOpenFileName(this, "Wybierz plik do wczytania", "", "Pliki tekstowe (*.txt)");
     std::ifstream file(qPrintable(fileName));
     if (!file.is_open())
     {
@@ -207,4 +207,21 @@ void MainWindow::on_openAction_triggered()
         model->addPoint(x, y);
     }
     updatePlot();
+}
+
+void MainWindow::on_saveAction_triggered()
+{
+    auto fileName = QFileDialog::getSaveFileName(this, "Wybierz plik do zapisania", "", "Pliki tekstowe (*.txt)");
+    std::ofstream file(qPrintable(fileName));
+    if (!file.is_open())
+    {
+        QMessageBox::critical(this, "Błąd", "Nie udało się otworzyć pliku do zapisu");
+        return;
+    }
+
+    for (auto point : model->Data)
+    {
+        file << point.X() << " " << point.Y() << "\n";
+    }
+    file.close();
 }

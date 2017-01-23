@@ -53,6 +53,7 @@ void MainWindow::setGroupNumberFromField()
     if (valueFromEdit(ui->groupNumberEdit, &k) && k > 0)
     {
         model->setK(k);
+        updatePlot();
     }
     else
     {

@@ -1,5 +1,6 @@
 #include "customplot.h"
 #include "mainwindow.h"
+#include <cstdlib>
 
 CustomPlot::CustomPlot(QWidget* parent) : QCustomPlot(parent)
 {
@@ -68,13 +69,6 @@ void CustomPlot::UpdatePlot()
             graph(graphIndex + i)->addData(point.X(), point.Y());
         }
     }
-    /*for (auto path : model->GroupPaths)
-    {
-        auto newGraph = _newGraph(graphIndex, QCPScatterStyle::ssSquare);
-        graphIndex += 1;
-        newGraph->setLineStyle(QCPGraph::lsLine);
-        _addPointsToGraph(newGraph, path);
-    }*/
 
     if (model->FixedAxes)
     {
@@ -109,7 +103,7 @@ void CustomPlot::mousePressEvent(QMouseEvent *ev)
     double x = xAxis->pixelToCoord(ev->x());
     double y = yAxis->pixelToCoord(ev->y());
     model->Data.push_back(DataPoint(x, y));
-    model->Clusters.push_back(0);
+    model->Clusters.push_back(rand() % model->K);
     auto mainWindow = (MainWindow*) this->parent()->parent();
     mainWindow->updatePlot();
 }

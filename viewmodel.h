@@ -19,4 +19,5 @@ public:
     ViewModel();
     void addPoint(double x, double y);
     void setK(int k);
+    void randomClusters();
 };

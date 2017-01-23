@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "KMeansClustering.h"
+#include <cstdlib>
 using namespace std;
 
 // TODO usunac
@@ -71,7 +72,14 @@ bool KMeansClustering::NextStep()
     _oldClusters = *_clusters;
 
     // make sure that number of clusters corresponds with number of points
+    int oldSize = _clusters->size();
     _clusters->resize(_data->size(), 0);
+
+    // set new clusters to random value
+    for (int i = oldSize; i < _clusters->size(); ++i)
+    {
+        (*_clusters)[i] = rand() % _k;
+    }
 
     
     determineCentroids();

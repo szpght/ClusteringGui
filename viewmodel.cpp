@@ -16,4 +16,14 @@ void ViewModel::setK(int k)
 {
     K = k;
     Program.K(k);
+    GroupPaths.clear();
+    randomClusters();
+}
+
+void ViewModel::randomClusters()
+{
+    for (auto & cluster : Clusters)
+    {
+        cluster = rand() % K;
+    }
 }

@@ -9,26 +9,26 @@ class KMeansClustering
 {
 private:
     int _k = 1;
-	DataVector *_data, _centroids;
-	IntVector *_clusters, _oldClusters;
+    DataVector *_data, _centroids;
+    IntVector *_clusters, _oldClusters;
 
 public:
-	KMeansClustering();
-	// data accesors
-	int K() const;
-	void K(int k);
-	const DataVector & Data() const;
+    KMeansClustering();
+    // data accesors
+    int K() const;
+    void K(int k);
+    const DataVector & Data() const;
     void Data(DataVector *data);
     void Clusters(IntVector *clusters);
-	const DataVector & Centroids() const;
-	const IntVector & Clusters() const;
+    const DataVector & Centroids() const;
+    const IntVector & Clusters() const;
 
-	// business logic
-	void Init();
-	bool NextStep();
+    // business logic
+    void Init();
+    bool NextStep();
 
 private:
-	void determineCentroids();
-	DataVector getCleanCentroids() const;
-	void assignToClusters();
+    void determineCentroids();
+    DataVector getCleanCentroids() const;
+    void assignToClusters();
 };

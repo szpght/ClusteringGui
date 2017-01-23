@@ -51,7 +51,7 @@ void MainWindow::on_exitAction_triggered()
 void MainWindow::setGroupNumberFromField()
 {
     int k;
-    if (valueFromEdit(ui->groupNumberEdit, &k) && k > 0)
+    if (valueFromEdit(ui->groupNumberEdit, &k) && k > 1)
     {
         model->setK(k);
         updatePlot();

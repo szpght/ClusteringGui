@@ -5,7 +5,7 @@
 class ViewModel
 {
 public:
-    int K = 1;
+    int K = 2;
     DataVector Data;
     IntVector Clusters;
     std::vector<DataVector> GroupPaths;

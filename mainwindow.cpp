@@ -52,7 +52,7 @@ void MainWindow::setGroupNumberFromField()
     int k;
     if (valueFromEdit(ui->groupNumberEdit, &k) && k > 0)
     {
-        model->K = k;
+        model->setK(k);
     }
     else
     {
@@ -151,4 +151,12 @@ void MainWindow::on_aboutAction_triggered()
                 "Copyrigth Paweł Pietrasz 2017\n"
                 "Licencja GNU GPL 3");
     QMessageBox::information(this, "O programie", msg);
+}
+
+void MainWindow::on_stepBtn_clicked()
+{
+    bool result = model->Program.NextStep();
+    auto centroids = model->Program.Centroids();
+    model->GroupPaths.push_back(centroids);
+    updatePlot();
 }

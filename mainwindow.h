@@ -27,6 +27,8 @@ private slots:
 
     void on_aboutAction_triggered();
 
+    void on_stepBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

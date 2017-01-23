@@ -3,14 +3,6 @@
 #include <cstdlib>
 using namespace std;
 
-// TODO usunac
-KMeansClustering::KMeansClustering()
-{
-    _data = new DataVector;
-    _clusters = new IntVector;
-}
-
-
 int KMeansClustering::K() const
 {
     return _k;
@@ -50,38 +42,10 @@ void KMeansClustering::Clusters(IntVector *clusters)
     _clusters = clusters;
 }
 
-void KMeansClustering::Init()
-{
-    //if (_data->size() < _k)
-    //  throw string("there cannot be more clusters than points");
-
-    // if centroid not present, use corresponding data point as centroid
-    _centroids.clear();
-    for (int i = 0; i < _k; ++i)
-    {
-        _centroids.push_back((*_data)[i]);
-    }
-
-    _clusters->resize(_data->size());
-
-    assignToClusters();
-}
-
 bool KMeansClustering::NextStep()
 {
     _oldClusters = *_clusters;
 
-    // make sure that number of clusters corresponds with number of points
-    int oldSize = _clusters->size();
-    _clusters->resize(_data->size(), 0);
-
-    // set new clusters to random value
-    for (int i = oldSize; i < _clusters->size(); ++i)
-    {
-        (*_clusters)[i] = rand() % _k;
-    }
-
-    
     determineCentroids();
     assignToClusters();
 
@@ -91,8 +55,7 @@ bool KMeansClustering::NextStep()
 void KMeansClustering::determineCentroids()
 {
     _centroids = getCleanCentroids();
-    vector<int> sumElements;
-    sumElements.resize(_k, 0);
+    IntVector sumElements(_k, 0);
 
     for (int i = 0; i < _data->size(); ++i)
     {
@@ -119,9 +82,7 @@ void KMeansClustering::determineCentroids()
 
 DataVector KMeansClustering::getCleanCentroids() const
 {
-    vector<DataPoint> v;
-    v.resize(_k, DataPoint(0, 0));
-    return v;
+    return DataVector(_k, DataPoint(0, 0));
 }
 
 void KMeansClustering::assignToClusters()

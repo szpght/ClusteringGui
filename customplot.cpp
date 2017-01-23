@@ -84,7 +84,7 @@ void CustomPlot::UpdatePlot()
         {
             auto newGraph = _newPathGraph(i);
             auto point = groupPaths[0][i];
-            graph(graphIndex + i)->addData(point.X(), point.Y());
+            newGraph->addData(point.X(), point.Y());
         }
     }
     // with more than one point a graph is needed for every step

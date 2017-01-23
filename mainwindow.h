@@ -29,6 +29,8 @@ private slots:
 
     void on_stepBtn_clicked();
 
+    void on_calculateBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     void setupChart();

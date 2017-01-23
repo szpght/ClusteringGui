@@ -157,12 +157,28 @@ void MainWindow::on_aboutAction_triggered()
 void MainWindow::on_stepBtn_clicked()
 {
     static bool lastResult = true;
-    bool result = model->Program.NextStep();
+    auto & program = model->Program;
+    bool result = program.NextStep();
     if (result || lastResult)
     {
-        auto centroids = model->Program.Centroids();
-        model->GroupPaths.push_back(centroids);
+        model->GroupPaths.push_back(program.Centroids());
         updatePlot();
     }
+    if (!result)
+    {
+        QMessageBox::information(this, "Koniec", "Osiągnięto ostateczny wynik");
+    }
     lastResult = result;
+}
+
+void MainWindow::on_calculateBtn_clicked()
+{
+    auto & program = model->Program;
+    bool result;
+    do
+    {
+        result = program.NextStep();
+        model->GroupPaths.push_back(program.Centroids());
+        updatePlot();
+    } while (result);
 }

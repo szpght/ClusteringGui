@@ -241,11 +241,7 @@ void MainWindow::on_savePlotAction_triggered()
     {
         return;
     }
-    bool success;
-    if (fileName.length())
-    {
-        success = plot->savePng(fileName, 0, 0, 1, 0);
-    }
+    bool success = plot->savePng(fileName, 0, 0, 1, 0);
     if (!success)
     {
         QMessageBox::critical(this, "Błąd", "Zapis nieudany");

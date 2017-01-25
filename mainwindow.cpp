@@ -17,6 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::initializeGui()
 {
+    auto groupsLabel = ui->label_4->text();
+    groupsLabel += QString(" (max ") + QString::number(Settings::MaxK)
+            + QString(")");
+    ui->label_4->setText(groupsLabel);
     plot = ui->plot;
     model = new ViewModel;
     plot->model = model;
@@ -51,7 +55,7 @@ void MainWindow::on_exitAction_triggered()
 void MainWindow::setGroupNumberFromField()
 {
     int k;
-    if (valueFromEdit(ui->groupNumberEdit, &k) && k > 1)
+    if (valueFromEdit(ui->groupNumberEdit, &k) && k > 1 && k <= Settings::MaxK)
     {
         model->setK(k);
         updatePlot();
@@ -157,6 +161,11 @@ void MainWindow::on_aboutAction_triggered()
 
 void MainWindow::on_stepBtn_clicked()
 {
+    if (model->Data.size() < model->K)
+    {
+        QMessageBox::critical(this, "Błąd", "Liczba punktów mniejsza niż liczba grup");
+        return;
+    }
     static bool lastResult = true;
     auto & program = model->Program;
     bool result = program.NextStep();
@@ -174,6 +183,11 @@ void MainWindow::on_stepBtn_clicked()
 
 void MainWindow::on_calculateBtn_clicked()
 {
+    if (model->Data.size() < model->K)
+    {
+        QMessageBox::critical(this, "Błąd", "Liczba punktów mniejsza niż liczba grup");
+        return;
+    }
     auto & program = model->Program;
     bool result;
     do

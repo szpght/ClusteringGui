@@ -39,14 +39,13 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void setupChart();
     CustomPlot *plot;
     ViewModel *model;
-    void drawPlot(ViewModel *viewModel);
     bool valueFromEdit(QLineEdit *edit, int *value);
     bool valueFromEdit(QLineEdit *edit, double *value);
     void badValueError();
     void initializeGui();
+    void updateModel();
 
 public slots:
     void newPointFromField();

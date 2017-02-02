@@ -4,6 +4,7 @@
 #include <QtCharts/QScatterSeries>
 #include <cmath>
 #include <fstream>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +26,14 @@ void MainWindow::initializeGui()
     model = new ViewModel;
     plot->model = model;
     updatePlot();
+}
+
+
+void MainWindow::updateModel()
+{
+    setRanges();
+    setGroupNumberFromField();
+    throw std::string("not implemented");
 }
 
 

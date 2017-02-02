@@ -41,10 +41,14 @@ private:
     Ui::MainWindow *ui;
     CustomPlot *plot;
     ViewModel *model;
+    QIntValidator *groupNumberValidator;
+    QDoubleValidator *doubleValidator;
     bool valueFromEdit(QLineEdit *edit, int *value);
     bool valueFromEdit(QLineEdit *edit, double *value);
     void badValueError();
     void initializeGui();
+    void initializeGroupsLabel();
+    void initializeValidation();
     void updateModel();
 
 public slots:

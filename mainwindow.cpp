@@ -18,14 +18,36 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::initializeGui()
 {
-    auto groupsLabel = ui->label_4->text();
-    groupsLabel += QString(" (max ") + QString::number(Settings::MaxK)
-            + QString(")");
-    ui->label_4->setText(groupsLabel);
+    initializeGroupsLabel();
+    initializeValidation();
     plot = ui->plot;
     model = new ViewModel;
     plot->model = model;
     updatePlot();
+}
+
+
+void MainWindow::initializeGroupsLabel()
+{
+    auto groupsLabel = ui->label_4->text();
+    groupsLabel += QString(" (zakres ") + QString::number(Settings::MinK)
+        + QString("-") + QString::number(Settings::MaxK) + QString(")");
+    ui->label_4->setText(groupsLabel);
+}
+
+
+void MainWindow::initializeValidation()
+{
+    groupNumberValidator = new QIntValidator(Settings::MinK, Settings::MaxK, this);
+    ui->groupNumberEdit->setValidator(groupNumberValidator);
+    
+    doubleValidator = new QDoubleValidator(this);
+    ui->minXEdit->setValidator(doubleValidator);
+    ui->maxXEdit->setValidator(doubleValidator);
+    ui->minYEdit->setValidator(doubleValidator);
+    ui->maxYEdit->setValidator(doubleValidator);
+    ui->newX->setValidator(doubleValidator);
+    ui->newY->setValidator(doubleValidator);
 }
 
 

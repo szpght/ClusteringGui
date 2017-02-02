@@ -10,5 +10,6 @@ namespace Settings
     const int DataPointSize = 8;
     const int PathPointSize = 9;
     const int LastPathPointSize = 12;
+    const int MinK = 2;
     const int MaxK = 20;
 }

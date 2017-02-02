@@ -21,6 +21,10 @@ public:
     void addPoint(double x, double y);
     void setXRange(double min, double max);
     void setYRange(double min, double max);
+    void setFixedRange(bool fixedRange);
     void setK(int k);
     void randomClusters();
+    bool step();
+    void cleanAll();
+    void cleanGroups();
 };

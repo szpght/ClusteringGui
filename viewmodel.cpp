@@ -24,6 +24,11 @@ void ViewModel::setYRange(double min, double max)
 	rangeYMax = max;
 }
 
+void ViewModel::setFixedRange(bool fixedRange)
+{
+    FixedAxes = fixedRange;
+}
+
 void ViewModel::setK(int k)
 {
     K = k;
@@ -38,4 +43,17 @@ void ViewModel::randomClusters()
     {
         cluster = rand() % K;
     }
+}
+
+bool ViewModel::step()
+{
+    return false;
+}
+
+void ViewModel::cleanAll()
+{
+}
+
+void ViewModel::cleanGroups()
+{
 }

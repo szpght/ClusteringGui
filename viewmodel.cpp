@@ -12,6 +12,18 @@ void ViewModel::addPoint(double x, double y)
     Clusters.push_back(rand() % K);
 }
 
+void ViewModel::setXRange(double min, double max)
+{
+	rangeXMin = min;
+	rangeXMax = max;
+}
+
+void ViewModel::setYRange(double min, double max)
+{
+	rangeYMin = min;
+	rangeYMax = max;
+}
+
 void ViewModel::setK(int k)
 {
     K = k;
